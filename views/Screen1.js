@@ -12,7 +12,7 @@ const Screen1 = () => {
 
   const [imageCollection, setImageCollection] = useState([])
   const getImageCollection = async () => {
-    const res = await fetch(`https://api.unsplash.com/search/collections?page=1&query=${searchValue}&client_id=${accessKey}`)
+    const res = await fetch(`https://api.unsplash.com/search/collections?page=1&per_page=30&query=${searchValue}&client_id=${accessKey}`)
      const jsonData = await res.json();
     //  console.log(jsonData)
     setImageCollection(jsonData)
@@ -24,15 +24,18 @@ const Screen1 = () => {
   
   return (
     <View style={styles.container}>
-      <FlatList data={imageCollection.results}
+      <FlatList numColumns={2}
+      data={imageCollection.results}
+      keyExtractor={item => item.id}
         renderItem={({item}) => {
           return (
-            <View> style={styles.imgContainer}
-              <Text>{item.title}</Text>
+            <View style={styles.imgContainer}>
+              {/* <Text>{item.title}</Text> */}
               <Image style={styles.img} source={{uri: item.cover_photo.urls.regular}}/>
             </View>
           );
         }}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   )
@@ -41,15 +44,23 @@ const Screen1 = () => {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    paddingVertical: 10,
+    // paddingHorizontal: 10,
     backgroundColor: 'yellow',
     width: '100%',
     height: '100%',
+    backgroundColor: '#fff',
+  },
+
+  imgContainer: {
+    width: 170,
+    height: 170,
+    margin: 3,
   },
 
   img: {
-    width: 100,
-    height: 100,
+    width: '100%',
+    height: '100%',
+    borderRadius: 10,
   }
 });
 
