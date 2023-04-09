@@ -16,8 +16,8 @@ export default function App() {
   return (
     <RecoilRoot>
       <NavigationContainer>
-      {/* {isLoading ? <MyStack/> : <Welcome/>} */}
-      <Welcome/>
+      {isLoading ? <MyStack/> : <Welcome/>}
+      {/* <Welcome/> */}
       </NavigationContainer>
     </RecoilRoot>
   );
