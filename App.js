@@ -1,19 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RecoilRoot } from 'recoil';
-import Navbar from './views/Navbar';
-import Screen1 from './views/Screen1'
+import { NavigationContainer } from '@react-navigation/native';
+import MyStack from './navigation';
+import Welcome from './views/Welcome';
 
 export default function App() {
+
+  const [isLoading, SetIsLoading] = useState()
+
+  setTimeout(() => {
+    SetIsLoading(true);
+  }, 2000);
+
   return (
-    <View style={styles.container}>
-      <StatusBar style="auto" />
-      <RecoilRoot>
-        <Navbar />
-        <Screen1 />
-      </RecoilRoot>
-    </View>
+    <RecoilRoot>
+      <NavigationContainer>
+      {isLoading ? <MyStack/> : <Welcome/>}
+      </NavigationContainer>
+    </RecoilRoot>
   );
 }
 

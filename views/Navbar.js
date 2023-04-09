@@ -35,6 +35,7 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     backgroundColor: '#fff',
     width: '100%',
+    marginTop: 30,
   },
 
   searchContainer: {
