@@ -11,12 +11,13 @@ export default function App() {
 
   setTimeout(() => {
     SetIsLoading(true);
-  }, 2000);
+  }, 3000);
 
   return (
     <RecoilRoot>
       <NavigationContainer>
-      {isLoading ? <MyStack/> : <Welcome/>}
+      {/* {isLoading ? <MyStack/> : <Welcome/>} */}
+      <Welcome/>
       </NavigationContainer>
     </RecoilRoot>
   );
